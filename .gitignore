@@ -1,0 +1,8 @@
+# externals
+vendor
+node_modules
+dist/*
+!dist/.gitkeep
+
+# IDE
+.idea

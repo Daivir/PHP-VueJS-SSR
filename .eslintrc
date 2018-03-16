@@ -1,0 +1,6 @@
+{
+  "extends": ["eslint:recommended", "standard", "plugin:vue/base"],
+  "rules": {
+    "indent": ["error", 2]
+  }
+}
