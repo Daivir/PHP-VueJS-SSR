@@ -5,22 +5,26 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./build/webpack.config.js --mode production",
-    "server": "node dist/server.min.js"
+    "dev": "webpack --config ./build/webpack.config.js --mode development --env.development",
+    "prod": "webpack --config ./build/webpack.config.js --mode production",
+    "start": "node dist/server.js"
   },
   "author": "Daivir",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",
-    "vue": "^2.5.15",
+    "jquery": "^3.3.1",
+    "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
-    "css-loader": "^0.28.10",
-    "eslint": "^4.18.2",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.9.0",
@@ -29,13 +33,14 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.8.2",
     "sass-loader": "^6.0.7",
     "vue-loader": "^14.2.1",
-    "vue-server-renderer": "^2.5.15",
-    "vue-template-compiler": "^2.5.15",
+    "vue-server-renderer": "^2.5.16",
+    "vue-template-compiler": "^2.5.16",
     "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.11",
+    "webpack-cli": "^2.0.12",
+    "webpack-manifest-plugin": "^2.0.0-rc.2",
     "webpack-node-externals": "^1.6.0"
   }
 }

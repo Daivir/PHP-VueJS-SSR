@@ -1,10 +1,18 @@
 import { createRenderer } from 'vue-server-renderer'
 import createApp from './entry-server'
 import express from 'express'
+import filePaths from '../dist/manifest.json'
 import fs from 'fs'
 // import { createApp } from '../resources/app'
 
 const server = express()
+
+// function dump (obj) {
+//   let output = JSON.stringify(obj, null, 2)
+//   let pre = document.createElement('pre')
+//   pre.innerHTML = output
+//   document.body.appendChild(pre)
+// }
 
 server.use('*', (request, response) => {
   const context = request.query
@@ -12,7 +20,9 @@ server.use('*', (request, response) => {
   const app = createApp(context)
 
   const options = {
-    title: request.query.title
+    title: request.query.title,
+    hash: filePaths,
+    host: request.query.host
   }
 
   let renderer = createRenderer({

@@ -1,8 +1,9 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-exports.trim = function (string, character, direction = '') {
+exports.trim = (string, character, direction = '') => {
   let all = character + '+'
-  let left = '^' + all; let right = all + '$'
+  let left = '^' + all
+  let right = all + '$'
   let trim = left + '|' + right
   const bool = r => !!direction.match(r)
   const dir = (b, d) => { if (bool(b)) trim = d }
@@ -10,6 +11,16 @@ exports.trim = function (string, character, direction = '') {
   dir(!!direction, left + '|' + right)
   let regex = new RegExp(trim, 'g')
   return string.replace(regex, '')
+}
+
+exports.extend = (obj1, obj2) => {
+  let keys = Object.keys(obj2)
+  keys.forEach(key => {
+    let value = obj2[key]
+    obj1[key] = !(typeof value === 'object') ? value
+      : exports.extend(obj1[key] || {}, value)
+  })
+  return obj1
 }
 
 exports.eslintLoader = function (action) {

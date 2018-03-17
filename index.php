@@ -11,6 +11,7 @@ $posts = [
 
 $response = $client->get('/blog', [
 	'query' => [
+	    'host' => $_SERVER['HTTP_HOST'],
 		'title' => 'Blog',
 		'view' => 'Blog',
 		'params' => compact('posts')
