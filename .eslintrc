@@ -1,8 +1,16 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "standard", "plugin:vue/base"],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "extends": ["eslint:recommended", "standard"],
   "rules": {
     "indent": ["error", 2],
-    "object-curly-spacing": ["error", "always"]
+    "object-curly-spacing": ["error", "always"],
+    "no-console": "off",
+    "prefer-promise-reject-errors": "off",
+    "no-template-curly-in-string": "off"
   }
 }

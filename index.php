@@ -2,18 +2,20 @@
 
 require 'vendor/autoload.php';
 
-$client = new GuzzleHttp\Client(['base_uri' => 'http://localhost:8081']);
+$client = new GuzzleHttp\Client(['base_uri' => 'http://localhost:3000']);
 
 $posts = [
 	['id' => 0, 'title' => 'Post-1', 'content' => 'Lorem ipsum dolor sit amet'],
 	['id' => 1, 'title' => 'Post-2', 'content' => 'Lorem ipsum dolor sit amet 1']
 ];
 
-$response = $client->get('/blog', [
+$brand = 'Brand';
+
+$response = $client->post('/blog', [
 	'query' => [
+	    'view' => 'Blog',
 	    'host' => $_SERVER['HTTP_HOST'],
-		'title' => 'Blog',
-		'view' => 'Blog',
+		'title' => "$brand | My Articles",
 		'params' => compact('posts')
 	]
 ]);

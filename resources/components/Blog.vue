@@ -1,12 +1,12 @@
 <template>
-<div class="blog">
-    Blog:
-    <div v-for="post in posts" :key="post.id">
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
-        <hr>
+    <div id="blog">
+        <h1>Blog</h1>
+        <div v-for="post in posts" :key="post.id">
+            <h1>{{ post.title }}</h1>
+            <div>{{ post.content }}</div>
+            <hr/>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
     $color: red;
-    div {
+    div#blog > h1 {
         color: $color;
     }
 </style>

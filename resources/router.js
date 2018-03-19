@@ -1,11 +1,13 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export function createRouter () {
-  return new Router({
+export function createRouter (route) {
+  let routes = []
+  routes.push(route)
+  return new VueRouter({
     mode: 'history',
-    routes: []
+    routes
   })
 }

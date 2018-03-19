@@ -13,16 +13,6 @@ exports.trim = (string, character, direction = '') => {
   return string.replace(regex, '')
 }
 
-exports.extend = (obj1, obj2) => {
-  let keys = Object.keys(obj2)
-  keys.forEach(key => {
-    let value = obj2[key]
-    obj1[key] = !(typeof value === 'object') ? value
-      : exports.extend(obj1[key] || {}, value)
-  })
-  return obj1
-}
-
 exports.eslintLoader = function (action) {
   if (action) {
     return {
@@ -42,19 +32,19 @@ exports.stylesExtract = function (loaders) {
   })
 }
 
-exports.stylesLoader = function (types, minify = true, source = true) {
-  let context = {
+exports.styleLoaders = function (types, production = false) {
+  let css = {
     loader: 'css-loader',
-    options: { minimize: minify },
-    sourceMap: source
+    options: { minimize: !production },
+    sourceMap: production
   }
-  let loaders = { css: exports.stylesExtract([context]) }
+  let loaders = { css: exports.stylesExtract([css]) }
   if (typeof types === 'string') types = [types]
   if (Array.isArray(types)) {
     types.forEach((type) => {
-      let loader = [context].concat({
+      let loader = [css].concat({
         loader: type + '-loader',
-        sourceMap: source
+        sourceMap: production
       })
       loaders[type] = exports.stylesExtract(loader)
     })
